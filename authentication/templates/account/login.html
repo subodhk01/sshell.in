@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="" type="">
+        <!-- <meta name="theme-color" content="black" /> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="">
+        <style>
+            body,html {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+            <div>
+                <form method="POST" action="/">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="text-muted">Username<input type="text" name="username" class="form-control" /></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-muted">Password<input type="password" name="password" class="form-control" /></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="form-control btn btn-warning" value="Login" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

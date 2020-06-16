@@ -4,3 +4,6 @@ import os
 
 class User(AbstractUser):
     avatar = models.CharField(max_length= 50, verbose_name="Avatar URL")
+
+    class Meta:
+        unique_together = ['email',]
