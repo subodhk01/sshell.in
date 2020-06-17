@@ -21,7 +21,7 @@
     <body>
         <div class="w-100 h-100 d-flex align-items-center justify-content-center">
             <div>
-                <form method="POST" action="/">
+                <form method="POST" action="">
                     {% csrf_token %}
                     <div class="form-group">
                         <label class="text-muted">Username<input type="text" name="username" class="form-control" /></label>
@@ -29,6 +29,9 @@
                     <div class="form-group">
                         <label class="text-muted">Password<input type="password" name="password" class="form-control" /></label>
                     </div>
+                    {% if msg %}
+                        {{msg}}
+                    {% endif %}
                     <div class="form-group">
                         <input type="submit" class="form-control btn btn-warning" value="Login" />
                     </div>
