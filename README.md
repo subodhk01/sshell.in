@@ -1,3 +1,4 @@
+![Django CI](https://github.com/subodhk01/sshell.in/workflows/Django%20CI/badge.svg)
 ## TODO
 - [ ] Custom decorators for user is_verified check
 - [x] Signup page and custom view
