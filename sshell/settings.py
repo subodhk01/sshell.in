@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_email_verification',
     'authentication',
     'social_django',
 ]
@@ -160,9 +161,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Email configs
 # Also templates for email verification are in authentication/templates/email
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_ACTIVE_FIELD = 'is_verified'
+EMAIL_SERVER = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_ADDRESS')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_MAIL_SUBJECT = 'Welcome to sshell.in - Confirm you Email Address'
+EMAIL_MAIL_HTML = 'email/mail_body.html'
+EMAIL_PAGE_TEMPLATE = 'email/confirm_template.html'
+EMAIL_PAGE_DOMAIN = BASE_URL
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = os.environ.get('EMAIL_ADDRESS')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+# EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

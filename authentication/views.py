@@ -1,19 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model, login as authLogin, authenticate ,logout as UserLogout
-from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django_email_verification import sendConfirm
 
 def index(request):
     return render(request, 'index.html')
-
-def email_verify(request, token):
-    TokenInstance = get_object_or_404(EmailToken, token=token)
-    TokenInstance.clean()
-    TokenInstance = get_object_or_404(EmailToken, token=token)
-    TokenInstance.user.is_verified = True
-    TokenInstance.user.save()
-    return render(request, 'email/confirm_template.html', {'success':True})
 
 def login(request):
     if request.user.is_authenticated :

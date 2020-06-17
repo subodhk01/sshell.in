@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, EmailToken
+from .models import User
 from django.contrib.auth.admin import UserAdmin
 
 ADDITIONAL_FIELDS = (
@@ -25,18 +25,3 @@ class CustomUserAdmin(UserAdmin):
     fieldsets =  ADDITIONAL_FIELDS + UserAdmin.fieldsets
 
 admin.site.register(User, CustomUserAdmin)
-
-@admin.register(EmailToken)
-class EmailTokenAdmin(admin.ModelAdmin):
-    list_display = (
-        'token',
-        'user',
-        'created_at',
-        'expires_at'
-    )
-    readonly_fields = (
-        'token',
-        'user',
-        'created_at',
-        'expires_at'
-    )
