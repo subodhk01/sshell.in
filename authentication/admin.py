@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import User
+from .models import User, RandomToken
 from django.contrib.auth.admin import UserAdmin
 
 ADDITIONAL_FIELDS = (
-        ("User Avatar", {
+        ("Extra fields", {
             "fields": (
                 'avatar',
+                'is_verified',
             ),
         }),
     )
@@ -19,9 +20,26 @@ class CustomUserAdmin(UserAdmin):
         }),
         ("Permissions", {
             'classes': ('wide',),
-            'fields': ('is_staff', 'is_active')
+            'fields': ('is_verified', 'is_staff', 'is_active')
         })
     )
     fieldsets =  ADDITIONAL_FIELDS + UserAdmin.fieldsets
 
 admin.site.register(User, CustomUserAdmin)
+
+@admin.register(RandomToken)	
+class RandomTokenAdmin(admin.ModelAdmin):	
+    list_display = (	
+        'token',	
+        'user',	
+        'expiry_minutes',
+        'created_at',	
+        'expires_at'	
+    )	
+    readonly_fields = (	
+        'token',	
+        'user',	
+        'expiry_minutes',
+        'created_at',	
+        'expires_at'	
+    ) 

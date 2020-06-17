@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_email_verification',
     'authentication',
+    'django_email_verification',
     'social_django',
 ]
 
@@ -166,7 +166,7 @@ EMAIL_SERVER = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-EMAIL_MAIL_SUBJECT = 'Welcome to sshell.in - Confirm you Email Address'
+EMAIL_MAIL_SUBJECT = 'Welcome to sshellin Confirm you Email Address'
 EMAIL_MAIL_HTML = 'email/mail_body.html'
 EMAIL_PAGE_TEMPLATE = 'email/confirm_template.html'
 EMAIL_PAGE_DOMAIN = BASE_URL
