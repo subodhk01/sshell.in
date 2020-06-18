@@ -6,6 +6,7 @@ import secrets
 class User(AbstractUser):
     avatar = models.CharField(max_length= 50, verbose_name="Avatar URL")
     is_verified = models.BooleanField(default=False, verbose_name="Email Verfied", help_text="Designates whether User's email address is verified.")
+    has_password = models.BooleanField(default=True)
     random_token = models.CharField(max_length=20, editable=False)
 
     class Meta:
