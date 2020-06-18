@@ -4,7 +4,9 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from authentication.models import RandomToken
+from django.db import transaction, IntegrityError
 from django_email_verification import sendConfirm
+import urllib
 
 def index(request):
     return render(request, 'index.html')
@@ -13,7 +15,8 @@ def signupsuccess(request, token):
     TokenInstance = get_object_or_404(RandomToken, token=token)
     TokenInstance.clean()
     TokenInstance = get_object_or_404(RandomToken, token=token)
-    return HttpResponse('Confirmation email sent to you email, checkin the email and login.')
+    email = request.GET.get('email')
+    return HttpResponse('Confirmation email sent to you email, checkin the email and login.'+ str(email))
 
 def login(request):
     if request.user.is_authenticated :
@@ -31,6 +34,7 @@ def login(request):
     else:
         return render(request, 'accounts/login.html')
 
+@transaction.atomic
 def signup(request):
     if request.method == "POST":
         try:
@@ -51,9 +55,13 @@ def signup(request):
                     sendConfirm(user)
                     TokenInstance = RandomToken(user=user, expiry_minutes=20)
                     TokenInstance.save()
+                    response = redirect("signupsuccess", token=TokenInstance.token)
+                    print(str(response))
+                    response['Location'] += "?" + urllib.parse.urlencode({'email':email})
+                    return response
                     return redirect("signupsuccess", token=TokenInstance.token)
-                except Exception as e:
-                    msg = "Unable to signup"
+                except IntegrityError as e:
+                    msg = "Unable to signup, see now this is a problem"
                     if "UNIQUE" in str(e):
                         if 'email' in str(e):
                             msg = "Account with email already exists"

@@ -12,7 +12,7 @@ class User(AbstractUser):
         unique_together = ['email',]
 
 class RandomToken(models.Model):
-    token = models.CharField(max_length=20, editable=False)
+    token = models.CharField(max_length=40, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, editable=False)
     expiry_minutes = models.SmallIntegerField(default=5, help_text="Time after with the token will expire")
     created_at = models.DateTimeField(editable=False)
@@ -20,7 +20,7 @@ class RandomToken(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:	
-            self.token = secrets.token_urlsafe(16)
+            self.token = secrets.token_urlsafe(32)
             self.created_at = timezone.now()
             self.expires_at = timezone.now() + timezone.timedelta(minutes=self.expiry_minutes)
         super(RandomToken, self).save(*args, **kwargs)
