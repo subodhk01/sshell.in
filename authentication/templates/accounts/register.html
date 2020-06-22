@@ -1,30 +1,100 @@
-{% extends 'base.html' %}
-{% block form %}
-    <form method="POST" action="">
-        {% csrf_token %}
-        <div class="form-group">
-            <label class="text-muted">Enter Username</label>
-            <input type="text" name="username" class="form-control" required/>
-        </div>
-        <div class="form-group">
-            <label class="text-muted">Enter Email</label>
-            <input type="email" name="email" class="form-control" required />
-        </div>
-        <div class="form-group">
-            <label class="text-muted">Enter Password</label>
-            <input type="password" name="password" class="form-control" required />
-        </div>
-        <div class="form-group">
-            <label class="text-muted">Confirm Password</label>
-            <input type="password" name="password2" class="form-control" required />
-        </div>
-        <div class="form-group text-danger">
-            {% if msg %}
-                {{msg}}
-            {% endif %}
-        </div>
-        <div class="form-group">
-            <input type="submit" class="form-control btn btn-warning" value="Signup" />
-        </div>
-    </form>
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Signup
+{% endblock %}
+
+{% block head %}
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link href="{% static 'css/signup.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="img">
+        <img src="{% static 'images/logos/main.png' %}">
+    </div>
+    <div class="login-content">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2 class="title">Sign Up</h2>
+            <div class="input-div one">
+                  <div class="i">
+                          <i class="fas fa-user"></i>
+                  </div>
+                  <div class="div">
+                          <h5>Name</h5>
+                          <input type="text" class="input" name="firstname">
+                  </div>
+               </div>
+            <div class="input-div one">
+                  <div class="i">
+                          <i class="fas fa-user"></i>
+                  </div>
+                  <div class="div">
+                          <h5>Username</h5>
+                          <input type="text" class="input" name="username">
+                  </div>
+               </div>
+            <div class="input-div one">
+                  <div class="i">
+                          <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="div">
+                          <h5>Email</h5>
+                          <input type="email" class="input" name="email">
+                  </div>
+               </div>
+               <div class="input-div one">
+                  <div class="i">
+                          <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="div">
+                          <h5>Password</h5>
+                          <input type="text" class="input" name="password">
+                  </div>
+               </div>
+               <div class="input-div pass">
+                  <div class="i"> 
+                       <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="div">
+                       <h5>Confirm Password</h5>
+                       <input type="password" class="input" name="password2">
+                </div>
+            </div>
+            <div class="form-group text-danger">
+                {% if msg %}
+                    {{msg}}
+                {% endif %}
+            </div>
+            <input type="submit" class="btn" value="Sign Up">
+            <a href="{% url 'login' %}">Go Back</a>
+            <br>
+            <a href="{% url 'login' %}">Already user , Login</a>
+        </form>
+    </div>
+</div>
+<script>
+const inputs = document.querySelectorAll(".input");
+
+
+function addcl(){
+let parent = this.parentNode.parentNode;
+parent.classList.add("focus");
+}
+
+function remcl(){
+let parent = this.parentNode.parentNode;
+if(this.value == ""){
+    parent.classList.remove("focus");
+}
+}
+
+
+inputs.forEach(input => {
+input.addEventListener("focus", addcl);
+input.addEventListener("blur", remcl);
+});</script>
 {% endblock %}

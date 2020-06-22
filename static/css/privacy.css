@@ -1,0 +1,267 @@
+ * {
+	           margin: 0;
+	           padding: 0;
+	           box-sizing: border-box;
+	       }
+
+	       body {
+	           font-family: "Poppins", sans-serif;
+	           background: url("https://i.ibb.co/Cbf2SJc/bg.jpg");
+	           background-repeat: no-repeat;
+	           background-size: cover;
+	           background-attachment: fixed;
+	       }
+
+	       
+	       .footer {
+	           width: 100%;
+	           margin: auto;
+	           display: block;
+	           background:#2f3136;
+	       }
+
+	       .inner-footer {
+	           width: 95%;
+	           margin: auto;
+	           padding: 30px 10px;
+	           display: flex;
+	           flex-wrap: wrap;
+	           box-sizing: border-box;
+	           justify-content: center;
+	       }
+
+	       .footer-items {
+	           width: 25%;
+	           padding: 1px 20px;
+	           box-sizing: border-box;
+	       }
+
+	       .sshell-logo-footer {
+	           position: absolute;
+	           width: 15%;
+	       }
+
+	       .footer h1 {
+	           padding: 10px 0;
+	           font-size: 25px;
+	           color: #fff;
+	       }
+
+	       .footer-items p {
+	           color: grey;
+	           font-size: 16px;
+	           text-align: justify;
+	           line-height: 25px;
+	       }
+
+	       .footer h2 {
+	           margin: 10px 0;
+	           color: white;
+	           font-size: 25px;
+	           font-weight: lighter;
+	       }
+
+	       .footer ul {
+	           list-style: none;
+	           color: #fff;
+	           font-size: 15px;
+	       }
+
+	       .footer ul a {
+	           text-decoration: none;
+	           outline: none;
+	           color: #fff;
+	           transition: 0.3s;
+	       }
+
+	       .footer ul a:hover {
+	           color: #f70037;
+	       }
+
+	       .footer ul li {
+	           margin: 10px 0;
+	           height: 25px;
+	       }
+
+	       .footer li i {
+	           margin-right: 20px;
+	       }
+
+	       .social-media {
+	           width: 100%;
+	           color: #fff;
+	           text-align: center;
+	       }
+
+	       .social-media a {
+	           text-decoration: none;
+	       }
+
+	       .social-media i {
+	           font-size: 25px;
+	           height: 15px;
+	           width: 15px;
+	           margin: 20px 5px;
+	           padding: 10px;
+	           color: #fff;
+	           transition: 0.3s;
+	       }
+
+	       .social-media i:hover {
+	           color: #f70037;
+	       }
+
+	       .footer-bottom {
+	           text-align: center;
+	           padding: 10px;
+	           background: rgba(0, 0, 0, 0.8);
+	           color: #fff;
+	           font-size: 12px;
+	       }
+
+	       @media screen and (max-width: 1085px) {
+	           .footer-items {
+	               width: 50%;
+	           }
+	       }
+
+	       @media screen and (max-width: 600px) {
+	           .footer-items {
+	               width: 100%;
+	           }
+	       }
+
+	       ::-webkit-scrollbar {
+	           width: 0;
+	           height: 0;
+	       }
+
+	       #scrollPath {
+	           position: fixed;
+	           top: 0;
+	           right: 0;
+	           width: 10px;
+	           height: 100%;
+	           background: rgba(255, 255, 255, 0.05);
+	       }
+
+	       #progressbar {
+	           position: fixed;
+	           top: 0;
+	           right: 0;
+	           width: 10px;
+	           z-index: 99999;
+	           background: #00b7ff;
+	       }
+
+	       #progressbar::before {
+	           content: "";
+	           position: absolute;
+	           top: 0;
+	           left: 0;
+	           width: 100%;
+	           height: 100%;
+	           background: #00b7ff;
+	           filter: blur(10px);
+	       }
+
+	       #progressbar::after {
+	           content: "";
+	           position: absolute;
+	           top: 0;
+	           left: 0;
+	           width: 100%;
+	           height: 100%;
+	           background: #00b7ff;
+	           filter: blur(10px);
+	       }
+
+	       .numbers {
+	           display: flex;
+	           justify-content: space-around;
+	       }
+
+	       .flexbox-item {
+	           width: 170px;
+	           height: 170px;
+	           margin: 10px;
+	           margin-bottom: 50px;
+	           border: 2px solid #1cceff;
+	           border-radius: 50%;
+	           background: rgba(0, 0, 0, 0.8);
+	           position: relative;
+	       }
+
+	       .flexbox-item p {
+	           position: absolute;
+	           top: 50%;
+	           left: 50%;
+	           transform: translate(-50%, -50%);
+	           font-size: 20px;
+	       }
+
+	       .flexbox-item h1 {
+	           position: absolute;
+	           top: 50%;
+	           left: 50%;
+	           transform: translate(-50%, -50%);
+	           font-size: 40px;
+	       }
+
+	       .flexbox-item .one {
+	           position: absolute;
+	           top: 116%;
+	       }
+
+	       .sshell-logo {
+	           position: absolute;
+	           top: 26%;
+	           left: 37.5%;
+	           width: 23%;
+	       }
+	       @media screen and (max-width:768px){
+	               
+	       body{
+	           background:#000000;
+	       }
+	   
+	           .sshell-logo{
+	               position: absolute;
+	               left: 6%;
+	               top: 18%;
+	               width: 90%;
+	           }
+	       .sshell-video{
+	                           display: none;
+	                                   }
+	           .banner-area h2{
+	               position: absolute;
+	               left:50%;
+	               top:85%;
+	               font-size: 2em;
+	           }
+	           .banner-area h3{
+	               position: absolute;
+	               top:68%;
+	               left:17%;
+	               font-size: 2em;
+	           }
+	           #about{
+	               font-size: 13px;
+	           }
+	           .join{
+	               position: absolute;
+	               width: 100px;
+	           }
+	           .flexbox-item{
+	               width: 100px;
+	               height: 100px;
+	           }
+	           .flexbox-item p{
+	               font-size: 15px;
+	               text-align: center;
+	           }
+	           .sshell-logo-footer{
+	               display: none;
+	           }
+	       }

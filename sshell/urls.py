@@ -6,5 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('email/', include(mail_urls)),
     path('', include('social_django.urls', namespace='social')),
-    path('', include('authentication.urls'))
+    path('', include('authentication.urls')),
+    path('', include('dashboard.urls'))
 ]

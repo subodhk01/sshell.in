@@ -1,0 +1,214 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+Signup
+{% endblock %}
+
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="{% static 'css/privacy.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 9999999;">
+        <a class="navbar-brand" href="/" style="font-size: 30px; color: #1cceff">S<span
+                style="color:white;">SHELL</span></a> <button aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent"
+            data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/team.html"><b>Our Team</b></a>
+                </li>
+                <li class="nav-item active"><b><a class="nav-link" href="/contact.html" style="color:white">Contact
+                            us</a></b></li>
+                <li class="nav-item active"><b><a class="nav-link" href="/CTF.html" style="color:white">Join CTF</a></b>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+    <div class="d-flex bd-highlight" id="about" style="padding: 70px; background: rgba(0, 0, 0, 0.8);">
+        <div class="p-2 w-100 bd-highlight" style="color: white;">
+            <h1 style="color: #00b7ff">Privacy Policy for www.sshell.in</h1><br>
+            <br>
+            <p>At sshell, accessible from http://www.sshell.in, one of our main priorities is the privacy of our visitors.
+                This Privacy Policy document contains types of information that is collected and recorded by sshell and how
+                we use it.</p>
+            <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to
+                contact us.</p>
+            <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with
+                regards to the information that they shared and/or collect in sshell. This policy is not applicable to any
+                information collected offline or via channels other than this website.</p>
+            <h2>Consent</h2>
+            <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+            <h2>Information we collect</h2>
+            <p>The personal information that you are asked to provide, and the reasons why you are asked to provide it, will
+                be made clear to you at the point we ask you to provide your personal information.</p>
+            <p>If you contact us directly, we may receive additional information about you such as your name, email address,
+                phone number, the contents of the message and/or attachments you may send us, and any other information you
+                may choose to provide.</p>
+            <p>When you register for an Account, we may ask for your contact information, including items such as name,
+                company name, address, email address, and telephone number.</p>
+            <h2>How we use your information</h2>
+            <p>We use the information we collect in various ways, including to:</p>
+            <ul>
+                <li>Provide, operate, and maintain our website</li>
+                <li>Improve, personalize, and expand our website</li>
+                <li>Understand and analyze how you use our website</li>
+                <li>Develop new products, services, features, and functionality</li>
+                <li>Communicate with you, either directly or through one of our partners, including for customer service, to
+                    provide you with updates and other information relating to the webste, and for marketing and promotional
+                    purposes</li>
+                <li>Send you emails</li>
+                <li>Find and prevent fraud</li>
+            </ul>
+            <h2>Log Files</h2>
+            <p>sshell follows a standard procedure of using log files. These files log visitors when they visit websites.
+                All hosting companies do this and a part of hosting services' analytics. The information collected by log
+                files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time
+                stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that
+                is personally identifiable. The purpose of the information is for analyzing trends, administering the site,
+                tracking users' movement on the website, and gathering demographic information. Our Privacy Policy was
+                created with the help of the <a href="https://www.privacypolicygenerator.info" style="color:white">Privacy
+                    Policy Generator</a> and the <a href="https://www.privacypolicyonline.com/privacy-policy-generator/"
+                    style="color:white">Online Privacy Policy Generator</a>.</p>
+            <h2>Cookies and Web Beacons</h2>
+            <p>Like any other website, sshell uses 'cookies'. These cookies are used to store information including
+                visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is
+                used to optimize the users' experience by customizing our web page content based on visitors' browser type
+                and/or other information.</p>
+            <p>For more general information on cookies, please read <a
+                    href="https://www.cookieconsent.com/what-are-cookies/" style="color:white">"What Are Cookies"</a>.</p>
+            <h2>Privacy Policy Contact - Questions & Concerns</h2>
+            <p>If you have any questions or comments, or if you want to update, delete, or change any Personal Data we hold,
+                or you have a concern about the way in which we have handled any privacy matter you may contact us by email
+                at: <a href="mailto:privacy@sshell.in">privacy@sshell.in</a></p>The Personal Data that you will access will
+            be on a personal and confidential basis. Therefore, and in order to process with your request, you may be asked
+            to communicate the information necessary for your identification, i.e. a written testimony evidencing that you
+            are the owner of the said Personal Data.
+            <h2>Age Limitations</h2>
+            <p>Sshell does not allow use of our Services and Websites by anyone younger than 18 years old, unless if a
+                written parental or legal guardian consent is provided. If you learn that anyone younger than 18 is using
+                our Services, please contact us at <a href="mailto:privacy@sshell.in">privacy@sshell.in</a> and we will
+                immediately take the necessary actions to safeguard minors rights.</p>
+            <h2>Advertising Partners Privacy Policies</h2>
+            <p>You may consult this list to find the Privacy Policy for each of the advertising partners of sshell.</p>
+            <p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are
+                used in their respective advertisements and links that appear on sshell, which are sent directly to users'
+                browser. They automatically receive your IP address when this occurs. These technologies are used to measure
+                the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see
+                on websites that you visit.</p>
+            <p>Note that sshell has no access to or control over these cookies that are used by third-party advertisers.</p>
+            <h2>Third Party Privacy Policies</h2>
+            <p>sshell's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult
+                the respective Privacy Policies of these third-party ad servers for more detailed information. It may
+                include their practices and instructions about how to opt-out of certain options.</p>
+            <p>You can choose to disable cookies through your individual browser options. To know more detailed information
+                about cookie management with specific web browsers, it can be found at the browsers' respective websites.
+            </p>
+            <p></p><br>
+            <hr>
+            <p>SShell reserve all rights to make changes in privacy policy and changes will be notified.</p>
+        </div>
+    </div><br>
+    <br>
+    <div class="footer">
+        <div class="inner-footer">
+            <div class="footer-items">
+                <a href="#"><img alt="SShell-Logo" border="0" class="sshell-logo-footer"
+                        src="https://i.ibb.co/MgLtyCm/SShell-Logo.png"></a>
+            </div>
+            <div class="footer-items">
+                <h2>Quick Links</h2>
+                <ul>
+                    <a href="/index.html">
+                        <li>Home</li>
+                    </a>
+
+                    <a href="/team.html">
+                        <li>Our Team</li>
+                    </a>
+                    <a href="/contact.html">
+                        <li>Contact Us</li>
+                    </a>
+                    <a href="/PrivacyPolicy.html">
+                        <li>Privacy Policy</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="footer-items">
+                <h1>Services</h1>
+                <ul>
+                    <a href="/labs.html">
+                        <li>Labs</li>
+                    </a>
+                    <a href="/machines.html">
+                        <li>Machines</li>
+                    </a>
+                    <a href="/CTF.html">
+                        <li>CTF</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="footer-items">
+                <h1>Contact us</h1>
+                <ul>
+                    <li>
+                        <i class="fa fa-map-marker-alt"></i>&nbsp;Mit-Wpu,Pune,India
+                    </li>
+
+                    <a href="mailto:contact@sshell.in">
+                        <li> <i style="color: white" class="fa fa-envelope"></i>&nbsp;contact@sshell.in </li>
+                    </a>
+
+                </ul>
+                <div class="social-media" style="color: white;">
+                    <a href="https://discord.gg/FK978Zm"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.youtube.com/channel/UC-hm8uB-YlyACUhf_nde5ng"><i class="fab fa-youtube"></i></a>
+
+                    <a href="https://www.instagram.com/sshell.in/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/sshell"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Copyright &copy; sshell.in 2020. All rights reserved.
+        </div>
+    </div>
+    <script>
+        let progress = document.getElementById("progressbar");
+        let totalHeight = document.body.scrollHeight - window.innerHeight;
+        window.onscroll = function () {
+            let progressHeight = (window.pageYOffset / totalHeight) * 100;
+            progress.style.height = progressHeight + "%";
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js">
+    </script>
+    <script src="cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js">
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js">
+    </script>
+    <script src="jquery.counterup.min.js">
+    </script>
+    <script>
+        $(".counter").counterUp({
+            delay: 10,
+            time: 1000,
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+    </script>
+{% endblock %}

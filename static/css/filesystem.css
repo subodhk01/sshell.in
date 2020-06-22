@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background: #010615;
+    color: #fff;
+    font-family: 'Wallpoet', cursive;
+}
+h1{
+    position: absolute;
+    left: 35%;
+    animation: type 3s steps(22);
+    overflow: hidden;
+    white-space: nowrap;
+}
+p{
+    position: relative;
+    top:80px;
+    padding: 20px;
+    font-size: 20px;
+}
+@keyframes type{
+    0%{
+        width: 0ch;
+    }
+    100%{
+        width: 22ch;
+    }
+}

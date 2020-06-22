@@ -9,6 +9,7 @@ from authentication.models import RandomToken
 from django.views.generic.edit import FormView
 from django.db import transaction, IntegrityError
 from django.core import mail
+from django.utils import timezone
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django_email_verification import sendConfirm
@@ -61,21 +62,15 @@ def resetpassword(request):
     user = request.user
     if request.method == "POST":
         try:
-            has_password = request.POST['has_password']
-            print('has_password: ', has_password)
-        except KeyError:
-            print('KeyError at has_password form field')
-            return redirect('index')
-        try:
             old_password = request.POST.get('password')
             new_password = request.POST['new_password']
             new_password2 = request.POST['new_password2']
         except KeyError:
             msg = "Missing Fields"
-            return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':has_password })
+            return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':user.has_password })
         if new_password != new_password2:
             msg = "Passwords do not match"
-            return render(request, 'accounts/password_reset.html', {'msg':msg, 'has_password':has_password })
+            return render(request, 'accounts/password_reset.html', {'msg':msg, 'has_password':user.has_password })
         if len(new_password) >= 6:
             if old_password:
                 if user.check_password(old_password):
@@ -101,16 +96,7 @@ def resetpassword(request):
             msg = "Password length should be at least 6 digits."
             return render(request, 'accounts/password_reset.html', {'msg':msg}, {'has_password':has_password })
     else:
-        if user.is_authenticated:
-            return render(request, 'accounts/password_reset.html', {'has_password':user.has_password})
-        else:
-            token = get_object_or_404(RandomToken, token=request.GET.get('token'))
-            token.clean()
-            token = get_object_or_404(RandomToken, token=request.GET.get('token'))
-            return render(request, 'accounts/password_reset.html', {
-                'has_password':False,
-                'token': token.token
-            })
+        return render(request, 'accounts/password_reset.html', {'has_password':user.has_password})   
 
 def forgotpassword(request):
     if request.method == "POST":
@@ -190,6 +176,8 @@ def signup(request):
                 try:
                     user = get_user_model().objects.create_user(username, email, password)
                     sendConfirm(user)
+                    user.last_send_verification_link = timezone.now()
+                    user.save()
                     TokenInstance = RandomToken(user=user, expiry_minutes=20)
                     TokenInstance.save()
                     response = redirect("signupsuccess", token=TokenInstance.token)
@@ -209,6 +197,22 @@ def signup(request):
             return render(request, 'accounts/register.html', { 'msg': msg, 'email':email })
     else:
         return render(request, 'accounts/register.html')
+
+def emailnotverified(request):
+    time = timezone.now()
+    print(request.user.last_send_verification_link, time)
+    diff = time - request.user.last_send_verification_link
+    print(diff.seconds)
+    return render(request, 'accounts/email_not_verified.html')
+
+def team(request):
+    return render(request, 'team.html')
+
+def privacypolicy(request):
+    return render(request, 'privacypolicy.html')
+
+def contact(request):
+    return render(request, 'contact.html')
 
 def logout(request):
     UserLogout(request)

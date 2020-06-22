@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+Signup
+{% endblock %}
+
+{% block head %}
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" rel="stylesheet"> 
+    <link href="{% static 'css/privacy.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="brand"><span>SSHELL</span> PENETRATION TESTING LABS</h1>
+        <div class="wrapper animated bounceInLeft">
+            <div class="company-info">
+                <h3>SSHELL</h3>
+                <ul>
+                    <li><i class="fa fa-road"></i>MIT-WPU,pune</li>
+                    <li style="list-style: none">
+                        <br>
+                        <a href="mailto:contact@sshell.in">
+                        <ul>
+                            <li style="color: white;"><i class="fa fa-envelope"></i>&nbsp; contact@sshell.in</li>
+                        </ul></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact">
+                <h3>Email Us</h3>
+                <form action="https://submit-form.com/f8wImUhV9QHqx8D7NxcDy" target="_self">
+                    <input name="_redirect" type="hidden" value="http://sshell.in/confirm.html">
+                    <p><label>Name</label> <input id="name" name="name" type="text"></p>
+                    <p><label>Email Address</label> <input id="email" name="email" type="email"></p>
+                    <p><label>Phone Number</label> <input id="phone" name="phone" type="text"></p>
+                    <p class="full"><label>Message</label> 
+                    <textarea id="message" name="message" rows="5"></textarea></p>
+                    <p class="full"><button type="submit">Submit</button></p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

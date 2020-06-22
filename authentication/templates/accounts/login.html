@@ -1,27 +1,74 @@
-{% extends 'base.html' %}
-{% block form %}
-    <form method="POST" action="">
-        {% csrf_token %}
-        {% if password_reset %}
-            <div class="alert alert-success">
-                Password Reset Successfull
-            </div>
-        {% endif %}
-        <div class="form-group">
-            <label class="text-muted">Username</label>
-            <input type="text" name="username" class="form-control" required />
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block head %}
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="img">
+            <img src="{% static 'images/logos/main.png' %}">
         </div>
-        <div class="form-group">
-            <label class="text-muted">Password</label>
-            <input type="password" name="password" class="form-control" required />
+        <div class="login-content">
+            <form action="" method="POST" autocomplete="chrome-off">
+                {% csrf_token %}
+                <h2 class="title">LOGIN</h2>
+                {% if password_reset %}
+                    <div class="alert alert-success">
+                        Password Reset Successfull
+                    </div>
+                {% endif %}
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Username</h5>
+                        <input autocomplete="new-password" type="text" class="input" name="username" required/>
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Password</h5>
+                        <input autocomplete="new-password" type="password" class="input" name="password" required/>
+                    </div>
+                </div>
+                <div class="form-group text-danger">
+                    {% if msg %}
+                        {{msg}}
+                    {% endif %}
+                </div>
+                <a href="{% url 'forgotpassword' %}">Forgot Password?</a>
+                <input type="submit" class="btn" value="Login">
+                <a href="{% url 'signup' %}">Dont have an account?</a>
+                <a href="{% url 'index' %}">Go Back</a>
+            </form>
         </div>
-        <div class="form-group text-danger">
-            {% if msg %}
-                {{msg}}
-            {% endif %}
-        </div>
-        <div class="form-group">
-            <input type="submit" class="form-control btn btn-warning" value="Login" />
-        </div>
-    </form>
+    </div>
+    <script>
+        const inputs = document.querySelectorAll(".input");
+        function addcl() {
+            let parent = this.parentNode.parentNode;
+            parent.classList.add("focus");
+        }
+        function remcl() {
+            let parent = this.parentNode.parentNode;
+            if (this.value == "") {
+                parent.classList.remove("focus");
+            }
+        }
+        inputs.forEach(input => {
+            input.addEventListener("focus", addcl);
+            input.addEventListener("blur", remcl);
+        });
+    </script>
 {% endblock %}

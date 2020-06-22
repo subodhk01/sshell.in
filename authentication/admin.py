@@ -7,6 +7,7 @@ ADDITIONAL_FIELDS = (
             "fields": (
                 'avatar',
                 'is_verified',
+                'last_send_verification_link'
             ),
         }),
     )
@@ -20,7 +21,7 @@ class CustomUserAdmin(UserAdmin):
         }),
         ("Permissions", {
             'classes': ('wide',),
-            'fields': ('is_verified', 'is_staff', 'is_active')
+            'fields': ('is_verified', 'is_staff', 'is_active', 'last_send_verification_link')
         })
     )
     fieldsets =  ADDITIONAL_FIELDS + UserAdmin.fieldsets
