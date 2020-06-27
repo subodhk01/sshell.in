@@ -11,6 +11,7 @@ urlpatterns = [
     path('team/', views.team, name="team"),
     path('privacypolicy/', views.privacypolicy, name="privacypolicy"),
     path('contact/', views.contact, name="contact"),
+    path('success/<token>/<msg>/', views.success, name="success"),
     path('login/', views.login, name="login"),
     path('logout/', views.logout, name="logout"),
     path('signup/', views.signup, name="signup"),

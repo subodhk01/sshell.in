@@ -72,6 +72,7 @@
             <input type="submit" class="btn" value="Sign Up">
             <a href="{% url 'login' %}">Go Back</a>
             <br>
+            <a href="{% url 'social:begin' 'google-oauth2' %}">Google Login</a>
             <a href="{% url 'login' %}">Already user , Login</a>
         </form>
     </div>

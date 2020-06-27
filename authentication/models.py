@@ -15,7 +15,7 @@ class User(AbstractUser):
 
 class RandomToken(models.Model):
     token = models.CharField(max_length=40, editable=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, editable=False, null=True)
     expiry_minutes = models.SmallIntegerField(default=5, help_text="Time after with the token will expire")
     created_at = models.DateTimeField(editable=False)
     expires_at = models.DateTimeField(editable=False)
@@ -33,3 +33,9 @@ class RandomToken(models.Model):
 
     def __str__(self):
         return self.token
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=20)
+    message = models.TextField()

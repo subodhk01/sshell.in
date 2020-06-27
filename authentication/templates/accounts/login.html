@@ -50,6 +50,7 @@
                 <a href="{% url 'forgotpassword' %}">Forgot Password?</a>
                 <input type="submit" class="btn" value="Login">
                 <a href="{% url 'signup' %}">Dont have an account?</a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}">Google Login</a>
                 <a href="{% url 'index' %}">Go Back</a>
             </form>
         </div>

@@ -5,7 +5,7 @@ from django.core import exceptions
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
-from authentication.models import RandomToken
+from authentication.models import RandomToken, Contact
 from django.views.generic.edit import FormView
 from django.db import transaction, IntegrityError
 from django.core import mail
@@ -211,8 +211,37 @@ def team(request):
 def privacypolicy(request):
     return render(request, 'privacypolicy.html')
 
+
 def contact(request):
+    if request.method == "POST":
+        try:
+            name = request.POST['name']
+            email = request.POST['email']
+            phone = request.POST['phone']
+            message = request.POST['message']
+        except:
+            msg = "Missing Fields"
+            return render(request, 'contact.html', { 'msg':msg })
+        contact = Contact(
+            name=name,
+            email=email,
+            phone_number=phone,
+            message=message
+        )
+        contact.save()
+        TokenInstance = RandomToken()
+        TokenInstance.save()
+        msg = "Thank you for contacting us, we will reach you soon."
+        return redirect('success', token=TokenInstance.token, msg=msg)
+        
     return render(request, 'contact.html')
+
+def success(request, token, msg):
+    TokenInstance = get_object_or_404(RandomToken, token=token)
+    TokenInstance.clean()
+    TokenInstance = get_object_or_404(RandomToken, token=token)
+    TokenInstance.delete()
+    return render(request, 'success.html', {'msg':msg})
 
 def logout(request):
     UserLogout(request)
