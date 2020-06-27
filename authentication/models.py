@@ -5,6 +5,8 @@ import secrets
 
 class User(AbstractUser):
     avatar = models.CharField(max_length= 50, verbose_name="Avatar URL")
+    country = models.CharField(max_length= 50, null=True, blank=True)
+    about = models.TextField(null=True, blank=True)
     is_verified = models.BooleanField(default=False, verbose_name="Email Verfied", help_text="Designates whether User's email address is verified.")
     has_password = models.BooleanField(default=True)
     last_send_verification_link = models.DateTimeField(null=True, blank=True)

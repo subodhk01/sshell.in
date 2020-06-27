@@ -81,7 +81,7 @@ def resetpassword(request):
                     return response
                 else:
                     msg = "Invalid Old Password"
-                    return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':has_password })
+                    return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':user.has_password })
             elif not user.has_password:
                 user.set_password(new_password)
                 user.has_password = True
@@ -91,10 +91,10 @@ def resetpassword(request):
                 return response
             else:
                 msg = "Missing Old Password"
-                return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':has_password })
+                return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':user.has_password })
         else:
             msg = "Password length should be at least 6 digits."
-            return render(request, 'accounts/password_reset.html', {'msg':msg}, {'has_password':has_password })
+            return render(request, 'accounts/password_reset.html', {'msg':msg}, {'has_password':user.has_password })
     else:
         return render(request, 'accounts/password_reset.html', {'has_password':user.has_password})   
 
@@ -198,12 +198,30 @@ def signup(request):
     else:
         return render(request, 'accounts/register.html')
 
+@login_required
 def emailnotverified(request):
+    if request.user.is_verified:
+        return redirect('dashboard')
     time = timezone.now()
-    print(request.user.last_send_verification_link, time)
     diff = time - request.user.last_send_verification_link
     print(diff.seconds)
-    return render(request, 'accounts/email_not_verified.html')
+    if diff.seconds < 300:
+        return render(request, 'accounts/email_not_verified.html', {
+            'wait':True,
+            'time':300 - diff.seconds
+        })
+    if request.method == "POST":
+        user = request.user
+        sendConfirm(user)
+        user.last_send_verification_link = timezone.now()
+        user.save()
+        TokenInstance = RandomToken()
+        TokenInstance.save()
+        msg = "Confirmation Email successfully sent, check your email."
+        return redirect('success', token=TokenInstance.token, msg=msg)
+    return render(request, 'accounts/email_not_verified.html', {
+        'wait':False
+    })
 
 def team(request):
     return render(request, 'team.html')

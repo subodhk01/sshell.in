@@ -1,9 +1,16 @@
-{% extends 'base.html' %}
-{% block form %}
+{% extends 'layouts/base.html' %}
+{% block body %}
 <form method="POST" action="">
     <div class="alert alert-danger">
-        Email not verified, check your email for the verification link.<br>
-        <a class="text-danger" href="">Click here</a> to resend the verification link.
+        {% if wait %}
+            Wait {{time}} seconds before sending another confirmation email.
+        {% else %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                Email not verified, check your email for the verification link.<br>
+                <button class="btn btn-danger" type="submit">Click here</button> to resend the verification link.
+            </form>
+        {% endif %}
     </div>
 </form>
 {% endblock %}
