@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    {% block head %}
+
+    {% endblock %}
 
 </head>
 
@@ -45,13 +48,13 @@
 
                     {% endblock %}
 
-                    {% include 'layouts/footer.html' %}
-
                 </div>
                 <!-- End Page Content -->
 
             </div>
             <!-- End of Content Wrapper -->
+
+            {% include 'layouts/footer.html' %}
 
         </div>
 
