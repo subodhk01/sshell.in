@@ -5,7 +5,6 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('emailnotverified/', views.emailnotverified, name="emailnotverified"),
     path('signup/success/<token>/', views.signupsuccess, name="signupsuccess"),
-    path('passwordreset/', views.resetpassword, name="passwordreset"),
     path('passwordreset/forgotpassword/', views.forgotpasswordreset, name="forgotpasswordreset"),
     path('forgotpassword', views.forgotpassword, name="forgotpassword"),
     path('team/', views.team, name="team"),

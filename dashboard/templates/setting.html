@@ -65,21 +65,35 @@
             <h1>Change Password</h1>
             <p>Enter your current Sshell password along with a new one to change it.</p>
             <div class="col-lg-8">
-                <form>
-                    <div class="form-group">
-                        <label for="current-password" class="col-form-label">Current Password:</label>
-                        <input type="password" class="form-control" id="current-password" required>
-                    </div>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {% if has_password %}
+                        <div class="form-group">
+                            <label for="current-password" class="col-form-label">Current Password:</label>
+                            <input type="password" class="form-control" id="current-password" name="password" required>
+                            <input type="hidden" name="has_password" value="True"/>
+                        </div>
+                    {% else %}
+                        <input type="hidden" name="has_password" value="False"/>
+                        {% if token %}
+                            <input type="hidden" name="token" value="{{token}}" />
+                        {% endif %}
+                    {% endif %}
                     <div class="form-group">
                         <label for="new-password" class="col-form-label">New Password:</label>
-                        <input type="password" class="form-control" id="new-password" required>
+                        <input type="password" class="form-control" id="new-password" name="new_password" required>
                     </div>
                     <div class="form-group">
                         <label for="new-password" class="col-form-label">Confirm Password:</label>
-                        <input type="password" class="form-control" id="new-password" required>
+                        <input type="password" class="form-control" id="new-password" name="new_password2" required>
                     </div>
+                    <div class="form-group text-danger">
+                        {% if msg %}
+                            {{msg}}
+                        {% endif %}
+                    </div>
+                    <button class="btn btn-success" type="submit">Submit</button>
                 </form>
-                <button class="btn btn-success">Submit</button>
             </div>
         </div>
     </div>

@@ -8,6 +8,7 @@
 {% block head %}
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -42,7 +43,7 @@
                         <input autocomplete="new-password" type="password" class="input" name="password" required/>
                     </div>
                 </div>
-                <div class="form-group text-danger">
+                <div class="form-group text-danger pt-2">
                     {% if msg %}
                         {{msg}}
                     {% endif %}

@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model, login as authLogin, authenticate
 from django.http import HttpResponse
 from django.core import exceptions
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_http_methods
 from authentication.models import RandomToken, Contact
 from django.views.generic.edit import FormView
@@ -42,7 +42,7 @@ def forgotpasswordreset(request):
             user.save()
             TokenInstance.clean()
             response =  redirect('login')
-            response['Location'] += "?" + urllib.parse.urlencode({'password_reset':True})
+            response['Location'] += "?" + urllib.parse.urlencode({'f':True})
             return response
         else:
             response =  redirect('forgotpasswordreset')
@@ -54,49 +54,7 @@ def forgotpasswordreset(request):
         TokenInstance = get_object_or_404(RandomToken, token=token)
         TokenInstance.clean()
         TokenInstance = get_object_or_404(RandomToken, token=token)
-        return render(request, 'accounts/forgot_password_reset.html', {'token':token, 'msg':msg})
-
-@require_http_methods(['GET', 'POST'])
-@transaction.atomic
-def resetpassword(request):
-    user = request.user
-    if request.method == "POST":
-        try:
-            old_password = request.POST.get('password')
-            new_password = request.POST['new_password']
-            new_password2 = request.POST['new_password2']
-        except KeyError:
-            msg = "Missing Fields"
-            return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':user.has_password })
-        if new_password != new_password2:
-            msg = "Passwords do not match"
-            return render(request, 'accounts/password_reset.html', {'msg':msg, 'has_password':user.has_password })
-        if len(new_password) >= 6:
-            if old_password:
-                if user.check_password(old_password):
-                    user.set_password(new_password)
-                    user.save()
-                    response = redirect('login')
-                    response['Location'] += "?" + urllib.parse.urlencode({'password_reset':True})
-                    return response
-                else:
-                    msg = "Invalid Old Password"
-                    return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':user.has_password })
-            elif not user.has_password:
-                user.set_password(new_password)
-                user.has_password = True
-                user.save()
-                response =  redirect('login')
-                response['Location'] += "?" + urllib.parse.urlencode({'password_reset':True})
-                return response
-            else:
-                msg = "Missing Old Password"
-                return render(request, 'accounts/password_reset.html', {'msg':msg,'has_password':user.has_password })
-        else:
-            msg = "Password length should be at least 6 digits."
-            return render(request, 'accounts/password_reset.html', {'msg':msg}, {'has_password':user.has_password })
-    else:
-        return render(request, 'accounts/password_reset.html', {'has_password':user.has_password})   
+        return render(request, 'accounts/forgot_password_reset.html', {'token':token, 'msg':msg})   
 
 def forgotpassword(request):
     if request.method == "POST":
@@ -155,7 +113,8 @@ def login(request):
         else:
             return render(request, 'accounts/login.html', { 'msg': "Invalid Credentials" })
     else:
-            return render(request, 'accounts/login.html', {'password_reset': request.GET.get('password_reset')})
+        print(request.GET.get('password_reset'))
+        return render(request, 'accounts/login.html', {'password_reset': request.GET.get('password_reset')})
 
 @transaction.atomic
 def signup(request):
