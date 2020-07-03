@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -176,3 +177,7 @@ EMAIL_MAIL_SUBJECT = 'Welcome to sshellin Confirm you Email Address'
 EMAIL_MAIL_HTML = 'email/mail_body.html'
 EMAIL_PAGE_TEMPLATE = 'email/confirm_template.html'
 EMAIL_PAGE_DOMAIN = BASE_URL
+
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
