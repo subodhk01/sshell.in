@@ -100,7 +100,7 @@ def signupsuccess(request, token):
 
 def login(request):
     if request.user.is_authenticated :
-        return redirect(index)
+        return redirect('dashboard')
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -109,7 +109,7 @@ def login(request):
         print(user)
         if user is not None:
             authLogin(request, user)
-            return redirect(index)
+            return redirect('dashboard')
         else:
             return render(request, 'accounts/login.html', { 'msg': "Invalid Credentials" })
     else:

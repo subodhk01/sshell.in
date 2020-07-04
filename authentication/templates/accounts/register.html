@@ -8,6 +8,7 @@
 {% block head %}
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <link href="{% static 'css/signup.css' %}" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -19,6 +20,11 @@
         <form action="" method="POST">
             {% csrf_token %}
             <h2 class="title">Sign Up</h2>
+            <div class="form-group text-danger pt-3">
+                {% if msg %}
+                    {{msg}}
+                {% endif %}
+            </div>
             <div class="input-div one">
                   <div class="i">
                           <i class="fas fa-user"></i>
@@ -63,11 +69,6 @@
                        <h5>Confirm Password</h5>
                        <input type="password" class="input" name="password2">
                 </div>
-            </div>
-            <div class="form-group text-danger">
-                {% if msg %}
-                    {{msg}}
-                {% endif %}
             </div>
             <input type="submit" class="btn" value="Sign Up">
             <a href="{% url 'login' %}">Go Back</a>
