@@ -17,7 +17,7 @@ class User(AbstractUser):
         unique_together = ['email',]
 
 class RandomToken(models.Model):
-    token = models.CharField(max_length=40, editable=False)
+    token = models.CharField(max_length=100, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, editable=False, null=True)
     expiry_minutes = models.SmallIntegerField(default=5, help_text="Time after with the token will expire")
     created_at = models.DateTimeField(editable=False)
