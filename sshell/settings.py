@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'dashboard',
+    'blog',
     'django_email_verification',
     'social_django',
 ]

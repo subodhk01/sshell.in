@@ -7,5 +7,6 @@ urlpatterns = [
     path('email/', include(mail_urls)),
     path('', include('social_django.urls', namespace='social')),
     path('', include('authentication.urls')),
-    path('', include('dashboard.urls'))
+    path('', include('dashboard.urls')),
+    path('', include('blog.urls'))
 ]
