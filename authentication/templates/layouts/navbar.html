@@ -40,15 +40,11 @@
     </div>
     <div class="mobile-menu">
         <ul class="menu">
-            <li class="menu-item">
-                <a href="{% url 'team' %}">Our Team</a>
-            </li>
+            
             <li class="menu-item">
                 <a href="{% url 'contact' %}">Contact Us</a>
             </li>
-            <li class="menu-item">
-                <a href="">Join CTF</a>
-            </li>
+            
             {% if user.is_authenticated %}
                 <li class="menu-item">
                     <a href="{% url 'logout' %}">Logout</a>
