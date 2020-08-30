@@ -6,21 +6,26 @@ Home
 {% endblock %}
 
 {% block head %}
-<link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<link href="{% static 'css/index.css' %}" rel="stylesheet" />
+<meta charset="UTF-8">
+      <meta content="width=device-width, user-scalable=no" name="viewport">
+      <link href="https://i.ibb.co/MgLtyCm/SShell-Logo.png" rel="icon">
+      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	  <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+	  <link href="{% static 'css/loader.css' %}" rel="stylesheet" />
+
 {% endblock %}
 
 {% block body %}
 {% include 'layouts/navbar.html' %}
 	<div id="progressbar"></div>
-	<div id="scrollPath"></div><a href="#"><img alt="SShell-Logo" border="0" class="sshell-logo"
-			src="https://i.ibb.co/MgLtyCm/SShell-Logo.png"></a>
+	<div id="scrollPath"></div>
 	<div class="banner-area">
+		<img alt="SShell-Logo" border="0" class="sshell-logo"
+			src="https://i.ibb.co/MgLtyCm/SShell-Logo.png"><br>
 		<h3><b>PEN -TESTING LABS</b></h3><br>
 		<h2><b>Are You @:~<span class="type" style="color: white;"></span></b></h2><b></b>
 	</div>
@@ -37,7 +42,7 @@ Home
 				and so we are developing an online community that provides a platform<br>
 				which allows you to test your penetration testing skills and<br>
 				share your experiences with people stark in this field.</p>
-			<form action="CTF.html"><button class="join" type="submit" style="color: white"><b>Join</button>
+			<form action="login"><button class="join" type="submit" style="color: white"><b>Join</button>
 		</div>
 		<div class="p-2 flex-shrink-1 bd-highlight sshell-video"
 			style="border: 1px solid white; color: white; padding: 5px;">
