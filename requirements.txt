@@ -3,7 +3,7 @@ awesome-slugify==1.6.5
 certifi==2020.6.20
 cffi==1.14.0
 chardet==3.0.4
-cryptography==2.9.2
+cryptography==3.2
 defusedxml==0.7.0rc1
 dj-database-url==0.5.0
 Django==3.0.8
