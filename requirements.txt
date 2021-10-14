@@ -25,3 +25,4 @@ sqlparse==0.3.1
 Unidecode==0.4.21
 urllib3==1.25.9
 whitenoise==5.1.0
+
