@@ -4,7 +4,7 @@
 - [x] Seperate views for password reset and forgot password
 - [x] Signup page and custom view
 - [x] function to send email confirmation mail
-- [x] {Not needed}management command to flush expired tokens
+- [x] {Not needed} management command to flush expired tokens
 
 ## Front end TODOs
 - [ ] Browser autofill disable
